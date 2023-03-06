@@ -1,0 +1,57 @@
+{
+  "task_cfg": {
+    "tasks": [
+      "vqa"
+    ],
+    "vqa": {
+      "type": "vlqg",
+      "config": {
+        "task_attributes": [
+          {
+            "name": "question",
+            "type": "text",
+            "size": 100,
+            "need_tokenize": true,
+            "weight": 1.0
+          },
+          {
+            "name": "image",
+            "type": "image",
+            "size": 100,
+            "need_normalize": true,
+            "weight": 1.0
+          }
+        ],
+        "label_attribute": {
+          "name": "answer",
+          "type": "text",
+          "size": 100,
+          "need_tokenize": true
+        }
+      }
+    }
+  },
+  "model_cfg": {
+    "vlmo": {
+      "type": "vlmo",
+      "config": {
+        "max_seq_length": 128,
+        "hidden_size": 768,
+        "num_hidden_layers": 12,
+        "num_attention_heads": 12,
+        "intermediate_size": 3072,
+        "hidden_dropout_prob": 0.1,
+        "attention_probs_dropout_prob": 0.1,
+        "initializer_range": 0.02
+      }
+    }
+  },
+  "optim_cfg": {
+    "optimizer": "AdamW",
+    "lr": 1e-5,
+    "weight_decay": 0.01,
+    "scheduler": "linear",
+    "warmup_steps": 0,
+    "total_steps": 80000
+  }
+}
